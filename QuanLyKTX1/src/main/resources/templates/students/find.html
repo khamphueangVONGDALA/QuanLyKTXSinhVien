@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+<h1> *****************Danh Sách Sinh Viên********************</h1>
+<form th:action="@{/students/find}" method="get">
+	Name:
+	<input type="text" name="name" placeholder="nhập tên" />
+	<input type="submit" value="find" />
+</form>
+<hr />
+
+
+<table >
+  <tr>
+    <th>ID</th>
+    <th>Tên</th>
+    <th>CMT</th>
+    <th>lớp học </th>
+    <th>ngày sinh</th>
+    <th>quê quán</th>
+  </tr>
+  <tr th:each="item : ${students}">
+	<td th:text="${item.id}"></td>
+	<td th:text="${item.name}"></td>
+	<td th:text="${item.CMT}"></td>
+	<td th:text="${item.classroom}"></td>	
+	<td th:text="${item.dob}"></td>
+	<td th:text="${item.hometown}"></td>  
+	<td>
+		<a th:href="@{'/students/edit/' + ${item.id}}">Edit</a> |
+		<a th:href="@{'/students/delete/' + ${item.id}}">Delete</a>		
+	</td> 
+  </tr>
+
+</table>
+</body>
+</html>

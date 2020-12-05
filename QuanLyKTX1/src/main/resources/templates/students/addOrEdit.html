@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<h1 style="font-family:courier;">Học Viện Công Nghệ Bưu Chính Viễn Thông </h1>
+<hr />
+<h4 style="font-family:courier;">Thông Tin Sinh Viên</h4>
+<form th:action="@{/students/saveOrUpdate}" method="post" th:object="${student}">
+
+	<input type="text" th:field="*{id}" placeholder="nhập id" ><br >
+	<input type="text" th:field="*{name}" placeholder="nhập tên" ><br >
+	<input type="text" th:field="*{CMT}"placeholder="nhập CMT" ><br >
+	<input type="text" th:field="*{dob}" placeholder="nhập ngày sinh"><br >
+	<input type="text" th:field="*{classroom}" placeholder="nhập lớp học"><br >
+	<input type="text" th:field="*{hometown}" placeholder="nhập quê quán"><br >
+	<input type="submit" value="Add" >		
+	<br>
+	<br>
+	<a th:href="@{/students/list}">List Sinh Vien </a>	
+</form>
+
+</body>
+</html>
